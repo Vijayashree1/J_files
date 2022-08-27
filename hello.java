@@ -20,7 +20,6 @@ public class HelloWorld {
 											} else {
 															return "Hello World!";
 																	}
-						}
 
-	
+		}	
 }

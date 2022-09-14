@@ -1,28 +1,19 @@
 pipeline {
     agent any
-    //triggers {
-		//cron('* * * * *')
-	//}
-    stages { 
-	stage('Build') {
+    stages {
+        stage('Build') {
+            steps {
+				sh '''
+				 mvn clean install
+				'''
+			}
+		}
+	stage('deploy') {
 	    steps {
-			      echo 'building the application'
-	    }
-	}
-	
-	stage('Test') {
-	    steps {
-			      
-			echo 'testing the application'
-	    }
-        }
-		
-	stage('Deploy') {
-	    steps {
-			      
-			echo 'deploying the the application'
-	    }
-        }
+				sh '''
+				 cp /root/var/lib/jenkins/workspace/target/*.war /root/opt/tomcat/webapps
+				'''
+			}
+		}
     }
-	
 }

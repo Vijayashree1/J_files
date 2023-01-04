@@ -1,19 +1,15 @@
 pipeline {
     agent any
     stages {
+        stage('Git Checkout') {
+            steps {
+		git 'https://github.com/Vijayashree1/J_files.git'
+            }
+	}
         stage('Build') {
             steps {
-				sh '''
-				 mvn clean install
-				'''
-			}
-		}
-		stage('deploy') {
-			steps {
-				sh '''
-				 cp /root/var/lib/jenkins/workspace/target/*.war /root/opt/tomcat/webapps
-				'''
-			}
-		}
+		sh 'mvn clean package'
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ pipeline {
 	stage ('Deploy') {
 	    steps {
 		sshagent(['Deploy']) {
-    		scp /var/lib/jenkins/workspace/Hello World/target/org.jacoco.examples.maven.java-1.0-SNAPSHOT.jar ec2-user@54.95.101.195:/opt/apache-tomcat-8.5.84/webapps/
+    		sh 'scp /var/lib/jenkins/workspace/Hello World/target/org.jacoco.examples.maven.java-1.0-SNAPSHOT.jar ec2-user@54.95.101.195:/opt/apache-tomcat-8.5.84/webapps'
 		}
     	    }
 	}
